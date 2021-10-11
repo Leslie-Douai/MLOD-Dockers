@@ -40,11 +40,11 @@ void initialiseDate(Date *d){
 Date creerDateParCopie(){
     Date d;
     printf( "Jour :");
-    scanf("%i", &d->Jour);
+    scanf("%i", &d.Jour);
     printf( "Mois :");
-    scanf("%i", (int*)&d->mois);
+    scanf("%i", (int*)&d.mois);
     printf( "Anne :");
-    scanf("%i", &d->annee);
+    scanf("%i", &d.annee);
     return d;
 }
 
