@@ -21,7 +21,11 @@ int main(){
     valeurDesDes(-3);
     printf("%s \n","Autre test 19");
     valeurDesDes(19);
+    printf("%s \n","Autre test 1");
+    valeurDesDes(1);
     printf("%s \n","Autre test 4");
     valeurDesDes(4);
+    printf("%s \n","Autre test 9");
+    valeurDesDes(9);
     return 0;
 }
