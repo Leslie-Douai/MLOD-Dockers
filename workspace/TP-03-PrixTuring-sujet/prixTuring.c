@@ -50,13 +50,15 @@ int scanLineAsInt() {
 
 typedef struct Winners{
 	int Annee;
-	char Nom;
-	char Desc;
+	char *Nom;
+	char *Desc;
 } Winners;
 
-void readWinners(int nbGagnants){
+
+
+Winners readWinners(int nbGagnants){
 	
-	 Winners *WinnersRecord[nbGagnants];
+	Winners *WinnersRecord[nbGagnants];
 	 for (int i = 0;i<nbGagnants;i++){
 		 WinnersRecord[i]->Annee = scanLineAsInt();
 		 WinnersRecord[i]->Nom = scanLine();
@@ -64,11 +66,11 @@ void readWinners(int nbGagnants){
 	 }
 };
 
-void printWinners(int nbGagnants){
+void printWinners(int nbGagnants, Winners WinnersRecord){
 	for (int i = 0;i<nbGagnants;i++){;
-		printf("%i \n", WinnersRecord[i].Annee);
-		printf("%s \n", WinnersRecord[i].Nom);
-		printf("%s \n", WinnersRecord[i].Desc);
+		printf("%i \n", WinnersRecord[i]->Annee);
+		printf("%s \n", WinnersRecord[i]->Nom);
+		printf("%s \n", WinnersRecord[i]->Desc);
 };
 }
 int main(void)
@@ -76,8 +78,12 @@ int main(void)
 
 	int nbGagnants = scanLineAsInt();
 	printf("nbGagnants = %i\n",nbGagnants);
-
-	readWinners(nbGagnants);
-	printWinners(nbGagnants);
+	//envoyer (antoine lambert) l'adresse de la case avec & 
+	// utilisation calloc
+	//allocation, pointeur, etoile et et cad * et &
+	//Bien retravailler prixTuring !!!!!
+	
+	
+	printWinners(nbGagnants,readWinners(nbGagnants));
 	return EXIT_SUCCESS;
 }
