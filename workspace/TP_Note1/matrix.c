@@ -34,10 +34,10 @@ void readMatrix(int i,MatrixArray *tableau){
     int nbrLignes = tableau->matrices[i].nbrLignes;
     int nbrColonnes = tableau->matrices[i].nbrColonnes;
 
-    tableau->matrices[i].matrice[nbrLignes][nbrColonnes];
+    //tableau->matrices[i].matrice[nbrLignes][nbrColonnes] => format tableau voulu
     
     for(int x=0; x<nbrLignes;x++){
-            tableau->matrices[i]->matrice[x]=scanLine();
+            tableau->matrices[i].matrice[x]=scanLine();
         }
 }
 
@@ -83,7 +83,7 @@ afficheMatrice(MatrixArray *Matrices,int i){
 
     printf("%i %i \n",nbrLignes,nbrColonnes);
     for(int x=0;x<Matrices->matrices[i].nbrLignes;x++){
-        printf("%s \n",tableau->matrices[i]->matrice[x])
+        printf("%s \n",Matrices->matrices[i]->matrice[x])
     }
 }
 
