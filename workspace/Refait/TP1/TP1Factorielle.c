@@ -23,6 +23,6 @@ int main(){
     printf("%lld \n",factorielle(3));
     printf("%lld \n",factorielle(19)); //affichable avec un long simple, mettre "%lu" pour le print
     printf("%lld \n",factorielle(32));//Pas atteignable, nombre négatif
-    printf("%lld \n",factorielle(67));//pas atteignable avec long long
+    printf("%lld \n",factorielle(67));//pas atteignable avec unsigned long long
     return 0;
 }
