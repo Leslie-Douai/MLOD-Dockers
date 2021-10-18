@@ -5,6 +5,7 @@
 
 bool estConvexe(bool tab[],int length){
     int nbChange = 0;
+    
     for(int i=0; i<length-1;i++){
         if (tab[i] != tab[i+1]){
             nbChange ++;
