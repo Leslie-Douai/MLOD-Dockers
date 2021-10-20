@@ -20,7 +20,11 @@ Liste creer(Element v){
 
 // ajoute l'élément v en tete de la liste l
 Liste ajoutTete(Element v, Liste l) {
-	return TODO;
+	Liste m;
+	m =	creer(v);
+	m->suiv = l;
+	
+	return m;
 }
 
 
@@ -34,7 +38,12 @@ void afficheElement(Element e) {
 // Attention la liste peut être vide !
 // version itérative
 void afficheListe_i(Liste l) {
-	TODO;
+	Liste p = l;
+	while(l->suiv != NULL){
+		 afficheElement(l->val);
+		 l=l->suiv;
+	}
+	printf("\n");
 }
 
 // version recursive
@@ -58,7 +67,27 @@ void detruire_r(Liste l) {
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
 // version itérative
 Liste ajoutFin_i(Element v, Liste l) {
-	return TODO;
+	Liste m;
+	m =	creer(v);
+
+	Liste n;
+	n = l;
+	
+	while(n->suiv != NULL){
+		 n=n->suiv;
+	}
+	n->suiv = m;
+	return l;
+
+	if(!estVide(l)){
+		Liste t = l; 
+		while(!estVide(t->suiv))
+			t = t->suiv;
+		t->suiv = creer(v);
+	}else{
+		l = creer(v);
+	}
+	return l;
 }
 
 // version recursive
