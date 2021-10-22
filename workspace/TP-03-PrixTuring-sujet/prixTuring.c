@@ -87,3 +87,5 @@ int main(void)
 	printWinners(nbGagnants,readWinners(nbGagnants));
 	return EXIT_SUCCESS;
 }
+
+

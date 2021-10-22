@@ -88,7 +88,7 @@ afficheMatrice(MatrixArray *Matrices,int i){
 }
 
 int main(){
-
+    // MatrixArray* 
     MatrixArray Matrices = readMatrixArray();
 	affiche(&Matrices);
 
