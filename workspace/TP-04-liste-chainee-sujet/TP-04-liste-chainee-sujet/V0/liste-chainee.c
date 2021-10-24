@@ -23,7 +23,6 @@ Liste ajoutTete(Element v, Liste l) {
 	Liste m;
 	m =	creer(v);
 	m->suiv = l;
-	
 	return m;
 }
 
@@ -34,7 +33,7 @@ void afficheElement(Element e) {
 
 // affiche tous les éléments de la liste l
 // Attention, cette fonction doit être indépendante du type des éléments de la liste
-// utiliser une fonction annexe affiche_element
+// utiliser une fonction annexe afficheElement
 // Attention la liste peut être vide !
 // version itérative
 void afficheListe_i(Liste l) {
@@ -48,49 +47,46 @@ void afficheListe_i(Liste l) {
 
 // version recursive
 void afficheListe_r(Liste l) {
-	if(!estVide(l)){
-		 afficheElement(l->val);
+	if(!estVide(l)){//Vraiment utiliser la fonction car le jour ou on change la struct des listes c'est la cata partout, alors que là juste estVide();
+		 afficheElement(l->val);//Encapsulation
 		 afficheListe_r(l->suiv);
 	}
 	printf("\n");
 }
 
-void detruireElement(Element e) {}
+void detruireElement(Element e) {
+}
 
 // Détruit tous les éléments de la liste l
 // version itérative
 void detruire_i(Liste l) {
-	TODO;
+	Liste t;
+	while(!estVide(l)){
+		t = l->suiv;//On stock
+		detruireElement(l->val);//on détruit le contenu
+		free(l);//On libere le lien
+		l = t;//on initialise la prochaine boucle
+	}
 }
 
 // version récursive
 void detruire_r(Liste l) {
-	TODO;
+	if(!estVide(l)){
+		detruire_r(l->suiv);
+	}
+	detruireElement(l->val);
+	free(l);
 }
 
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
 // version itérative
 Liste ajoutFin_i(Element v, Liste l) {
-	Liste m;
-	m =	creer(v);
-
-	Liste n;
-	n = l;
+	Liste n = l;
 	
-	while(n->suiv != NULL){
+	while(!estVide(n->suiv)){
 		 n=n->suiv;
 	}
-	n->suiv = m;
-	return l;
-
-	if(!estVide(l)){
-		Liste t = l; 
-		while(!estVide(t->suiv))
-			t = t->suiv;
-		t->suiv = creer(v);
-	}else{
-		l = creer(v);
-	}
+	n->suiv = creer(v);
 	return l;
 }
 
@@ -119,6 +115,9 @@ Liste cherche_i(Element v,Liste l) {
 		l = l->suiv;
 	}	
 	return NULL;
+
+	//CORRECTION
+	/*while(!estVide(l)|| ) */
 }
 
 // version récursive
@@ -135,16 +134,17 @@ Liste cherche_r(Element v,Liste l) {
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé
 // ne fait rien si aucun élément possède cette valeur
 // version itérative
-Liste retirePremier_i(Element v, Liste l) {
-	while (estvide(l))
-	{
+Liste retirePremier_i(Element v, Liste l){
+	Liste m =l;
+	
+	while (!estvide(m)){
+		if(equalsElement(v,m->val)){
+		m=m->suiv;
+		return l;
+		}
 	}
-	
-	if(equalsElement(v,l->val){
-		Liste m = l;
-		l=l->suiv;
-	})
-	
+	return NULL;
+		
 }
 
 
