@@ -42,9 +42,13 @@ void detruireElement(Element e) {
 	free(e);
 }
 
+
 // compare deux elements
 bool equalsElement(Element e1, Element e2){
 
-
 	return strcmp((char *)e1,(char *)e2)==0;
 }	
+
+MusicList triAnne(MusicList l){
+	
+}
