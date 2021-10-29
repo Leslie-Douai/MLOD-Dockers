@@ -27,20 +27,20 @@ ArbreBinaire creer(Element e) {
 // si a contient déjà un element e, ce dernier n'est pas insérer afin d'éviter les doublons
 // version itérative
 ArbreBinaire insere_i(ArbreBinaire a, Element e) {
+	ArbreBinaire p;
+	p = a;
 
-	if(estVide(a)){
-		a = creer(e);
-		return a;
+	while(!estVide(p->val)){
+		if (p->val == e){
+			return a;
+		}
+		if (p->val<e){
+			p= p->filsGauche;
+		}else{
+			p = p->filsGauche;	
+		}
 	}
-	if (a->val == e){
-		printf("%i",a->val);
-		return a;
-	}	
-	if (a->val<e){
-		a->filsDroit = insere_r(a->filsDroit,e);
-	}else{
-		a->filsGauche = insere_r(a->filsGauche, e);	
-	}
+	p = creer(e);
 	return a;
 }	
 
