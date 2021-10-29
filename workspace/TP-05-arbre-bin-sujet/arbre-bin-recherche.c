@@ -4,17 +4,23 @@
 
 // retourne TRUE si a est l'arbre vide et FALSE sinon
 bool estVide(ArbreBinaire a) {
-	return true;
+	return a==NULL;
 }
 
 // initialise l'arbre a à l'arbre vide
 void initialiser(ArbreBinaire* a) {
+	*a = NULL;
 }
 
 // créer un arbre contenant un seul noeud ayant la valeur e
 ArbreBinaire creer(Element e) {
+	Noeud* E;
+	E = malloc(sizeof(ArbreBinaire));
+	E->val = e;
+	E->filsGauche=NULL;
+	E->filsDroit=NULL;
 
-	return NULL;
+	return E;
 }
 
 // insere e dans a sachant que a est un arbre binaire de recherche
@@ -22,7 +28,20 @@ ArbreBinaire creer(Element e) {
 // version itérative
 ArbreBinaire insere_i(ArbreBinaire a, Element e) {
 
-	return NULL;
+	if(estVide(a)){
+		a = creer(e);
+		return a;
+	}
+	if (a->val == e){
+		printf("%i",a->val);
+		return a;
+	}	
+	if (a->val<e){
+		a->filsDroit = insere_r(a->filsDroit,e);
+	}else{
+		a->filsGauche = insere_r(a->filsGauche, e);	
+	}
+	return a;
 }	
 
 // insere e dans a sachant que a est un arbre binaire de recherche
@@ -30,13 +49,26 @@ ArbreBinaire insere_i(ArbreBinaire a, Element e) {
 // version récursive
 ArbreBinaire insere_r(ArbreBinaire a, Element e) {
 	
-	return NULL;
+	if(estVide(a)){
+		a = creer(e);
+		return a;
+	}
+	if (a->val == e){
+		return a;
+	}	
+	if (a->val<e){
+		a->filsDroit = insere_r(a->filsDroit,e);
+	}else{
+		a->filsGauche = insere_r(a->filsGauche, e);	
+	}
+	return a;
 }
 
 // retourne le nombre de noeud contenus dans l'arbre a
 int nombreDeNoeud(ArbreBinaire a){
-
-		return 0;
+	if(!estVide(a)){
+		return nombreDeNoeud(a->filsGauche) + 1 + nombreDeNoeud(a->filsDroit);
+	}
 }
 
 
@@ -60,12 +92,29 @@ ArbreBinaire pere(ArbreBinaire a, Element elem){
 
 
 void afficheRGD_r(ArbreBinaire a){
+	if(!estVide(a)){
+		printf("%i", a->val);
+		afficheRGD_r(a->filsGauche);
+		afficheRGD_r(a->filsDroit);
+	}
+
 }
 
 void afficheGRD_r(ArbreBinaire a){
+	if(!estVide(a)){
+		afficheGRD_r(a->filsGauche);
+		printf("%i", a->val);
+		afficheGRD_r(a->filsDroit);
+	}
+	
 }
 
 void afficheGDR_r(ArbreBinaire a){
+	if(!estVide(a)){
+		afficheGDR_r(a->filsGauche);
+		afficheGDR_r(a->filsDroit);
+		printf("%i", a->val);
+	}
 }
 
 // retourne le noeud dont la valeur est minimum dans l'arbre
